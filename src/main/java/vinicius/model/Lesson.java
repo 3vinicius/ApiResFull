@@ -27,7 +27,7 @@ public class Lesson {
     @Column(nullable = false)
     private String lessonDuration;
 
-    @Column(nullable = false)
+    @Column(nullable = false,scale = 2)
     private float value;
 
 
