@@ -1,31 +1,36 @@
 package vinicius.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
-@Entity(name = "tb_user")
+@Entity
+@Table(name = "tb_users_new")
 public class User {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 50)
+  //  @Column(nullable = false, length = 50)
     private String name;
 
-    @Column( length = 200)
+   // @Column( length = 200)
     private String avatarUrl;
 
-    @Column(unique = true,nullable = false,length = 11)
+   // @Column(unique = true,nullable = false,length = 11)
     private String phone;
 
-    @Column(unique = true, length = 100)
+   // @Column(unique = true, length = 100)
     private String email;
 
-    @Column(nullable = false, length = 50)
+    //@Column(nullable = false, length = 50)
     private String password;
-    @OneToMany(cascade = CascadeType.ALL)
-    private ArrayList<Lesson> lessons;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUser")
+//    private List<Lesson> lessons;
 
     public String getName() {
         return name;
@@ -67,13 +72,22 @@ public class User {
         this.password = password;
     }
 
-    public ArrayList<Lesson> getLessons() {
-        return lessons;
+// public List<Lesson> getLessons() {
+//      return lessons;
+// }
+//   public void setLessons(List<Lesson> lessons) {
+//        this.lessons = lessons;
+// }
+
+    public long getId() {
+        return id;
     }
 
-    public void setLessons(ArrayList<Lesson> lessons) {
-        this.lessons = lessons;
+    public void setId(long id) {
+        this.id = id;
     }
+
+
 
     @Override
     public String toString() {
@@ -83,7 +97,7 @@ public class User {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", lessons=" + lessons +
+//                ", lessons=" + lessons +
                 '}';
     }
 }
